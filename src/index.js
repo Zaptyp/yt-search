@@ -1235,16 +1235,20 @@ function _parsePlaylistInitialData ( responseText, callback )
     }
   } catch ( err ) { /* ignore */ }
 
-  const size = (
+  const sizeLabel = (
     _jp.value( json, '$..sidebar.playlistSidebarRenderer.items[0]..stats[0].simpleText' ) ||
     _jp.query( json, '$..sidebar.playlistSidebarRenderer.items[0]..stats[0]..text' ).join( '' )
-  ).match( /\d+/g ).join( '' )
+  ) || ''
+  const size = ( sizeLabel.match( /\d+/g ) || [] ).join( '' )
 
   // playlistVideoListRenderer contents
-  const list = _jp.query( json, '$..playlistVideoListRenderer..contents' )[ 0 ]
+  const list = _jp.query( json, '$..playlistVideoListRenderer..contents' )[ 0 ] || []
 
   // TODO unused atm
-  const listHasContinuation = ( typeof list[ list.length - 1 ].continuationItemRenderer === 'object' )
+  const listHasContinuation = (
+    list.length > 0 &&
+    typeof list[ list.length - 1 ].continuationItemRenderer === 'object'
+  )
 
   // const list = _jp.query( json, '$..contents..tabs[0]..contents[0]..contents[0]..contents' )[ 0 ]
   const videos = []
@@ -1316,8 +1320,8 @@ function _parsePlaylistInitialData ( responseText, callback )
       ''
     ),
 
-    image: plthumbnail || videos[ 0 ].thumbnail,
-    thumbnail: plthumbnail || videos[ 0 ].thumbnail,
+    image: plthumbnail || ( videos[ 0 ] && videos[ 0 ].thumbnail ),
+    thumbnail: plthumbnail || ( videos[ 0 ] && videos[ 0 ].thumbnail ),
 
     // playlist items/videos
     videos: videos,
