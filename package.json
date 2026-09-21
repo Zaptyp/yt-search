@@ -35,24 +35,24 @@
   },
   "dependencies": {
     "async.parallellimit": "~0.5.2",
-    "cheerio": "^1.0.0-rc.10",
+    "cheerio": "^1.2.0",
     "dasu": "~0.4.3",
     "boolstring": "~2.0.1",
     "human-time": "0.0.2",
-    "jsonpath-plus": "~10.3.0",
-    "minimist": "~1.2.5",
-    "node-fzf": "~0.14.0"
+    "jsonpath-plus": "~10.4.0",
+    "minimist": "~1.2.8",
+    "node-fzf": "https://github.com/Zaptyp/node-fzf"
   },
   "devDependencies": {
-    "@babel/core": "~7.27.1",
-    "@babel/preset-env": "~7.27.1",
+    "@babel/core": "~7.29.7",
+    "@babel/preset-env": "~7.29.7",
     "@talmobi/faucet": "0.0.3",
     "babelify": "~10.0.0",
-    "browserify": "~17.0.0",
-    "cross-env": "~7.0.2",
+    "browserify": "~17.0.1",
+    "cross-env": "~10.1.0",
     "looks-same-plus": "~0.0.3",
     "spacestandard": "~0.3.0",
-    "tape": "~5.9.0",
+    "tape": "~5.10.2",
     "wooster": "~0.5.0"
   }
 }
